@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tractor Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background-color: green;
+            }
+
+        .tractor {
+        height: 68px;
+        width: 186px;
+        background-image: url(tractor2.png);
+        background-size: 100%;
+        }
+
+        .combine {
+        height: 81.6px;
+        width: 235.2px;
+        background-image: url(combine.png);
+        background-size: 100%;
+        }
+
+        .box {
+            width: 500px;
+            height: 120px;
+            background-color: saddlebrown;
+            z-index: 2;
+            border-left: 217px solid saddlebrown;
+            border-right: 217px solid saddlebrown;
+            text-align: center;
+        }
+        c {
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background: rgba(255,250,250,.3); 
+    position: absolute;
+    text-align: center;
+    font-size: 100px;
+    color: white;
+        }
+        .acre {
+            width: 62.25px;
+            height: 68px;
+            background-size: 100%;
+            background-color: saddlebrown;
+            z-index: 2;
+            background-image: url(dirt.png);
+            display: inline-block;
+            padding: 0;
+        
+        }
+
+            .wrapper {
+        margin:  0 auto;
+        width:  1024px;
+    }
+
+    button {
+        padding: 50px;
+        font-size: 50px;
+    }
+
+    over {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: white;
+        z-index: 501;
+        text-align: center;
+        font-size: 25px;
+    }
+    score {
+        position: absolute;
+        top: 10px;
+        font-size: 26px;
+        color: white;
+
+    }
+
+    @media only screen and (min-width:769px ) {
+ over {
+    display: none;
+ }
+
+    @media only screen and (min-width:1500px ) {
+            .wrapper {
+        
+    }
+
+ 
+}
+    </style>
+</head>
+<body>
+    <img src="brokencombine.png"     style=" width:20px; position: absolute;">
+    <img src="brokencombineback.png" style=" width:20px; position: absolute;">
+    <img src="combine.png"           style=" width:20px; position: absolute;">
+    <img src="combineback.png"       style=" width:20px; position: absolute;">
+    <img src="brokenredcombine.png"     style=" width:20px; position: absolute;">
+    <img src="brokenredcombineback.png" style=" width:20px; position: absolute;">
+    <img src="redcombine.png"           style=" width:20px; position: absolute;">
+    <img src="redcombineback.png"       style=" width:20px; position: absolute;">
+    <img src="tractor2.png"     style=" width:20px; position: absolute;">
+    <img src="tractor2back.png" style=" width:20px; position: absolute;">
+    <img src="brokentractor2.png"           style=" width:20px; position: absolute;">
+    <img src="brokentractor2back.png"       style=" width:20px; position: absolute;">
+    <over>Sorry, but this game does not work on a phone or tablet</over> 
+    <c><br><br>Would you like to plant corn or wheat?<br><br> <button onclick="Corn();">Corn</button> <button onclick="Wheat();">Wheat</button></c>
+<div class="box" id="row1" style="  border-color: tan; border-top: 35px solid saddlebrown; background-color: tan; ">
+    <score>Score: $</score><score id = "numponits" style = "left: 555px;">0</score>
+    <div class="tractor" onclick="DriveTractor();" ondblclick="your2();"></div> <div class="combine" onclick="DriveCombine();" ondblclick="your();"> </div> </div>
+<div 
+class="acre" id="row1acre1"></div><div 
+class="acre" id="row1acre2"></div><div 
+class="acre" id="row1acre3"></div><div 
+class="acre" id="row1acre4"></div><div 
+class="acre" id="row1acre5"></div><div 
+class="acre" id="row1acre6"></div><div 
+class="acre" id="row1acre7"></div><div 
+class="acre" id="row1acre8"></div><div 
+class="acre" id="row1acre9"></div><div 
+class="acre" id="row1acre10"></div><div 
+class="acre" id="row1acre11"></div><div 
+class="acre" id="row1acre12"></div><div 
+class="acre" id="row1acre13"></div><div 
+class="acre" id="row1acre14"></div><div 
+class="acre" id="row1acre15"></div>
+<br>
+<div 
+class="acre" id="row2acre1"></div><div 
+class="acre" id="row2acre2"></div><div 
+class="acre" id="row2acre3"></div><div 
+class="acre" id="row2acre4"></div><div 
+class="acre" id="row2acre5"></div><div 
+class="acre" id="row2acre6"></div><div 
+class="acre" id="row2acre7"></div><div 
+class="acre" id="row2acre8"></div><div 
+class="acre" id="row2acre9"></div><div 
+class="acre" id="row2acre10"></div><div 
+class="acre" id="row2acre11"></div><div 
+class="acre" id="row2acre12"></div><div 
+class="acre" id="row2acre13"></div><div 
+class="acre" id="row2acre14"></div><div 
+class="acre" id="row2acre15"></div><br>
+<div 
+class="acre" id="row3acre1"></div><div 
+class="acre" id="row3acre2"></div><div 
+class="acre" id="row3acre3"></div><div 
+class="acre" id="row3acre4"></div><div 
+class="acre" id="row3acre5"></div><div 
+class="acre" id="row3acre6"></div><div 
+class="acre" id="row3acre7"></div><div 
+class="acre" id="row3acre8"></div><div 
+class="acre" id="row3acre9"></div><div 
+class="acre" id="row3acre10"></div><div 
+class="acre" id="row3acre11"></div><div 
+class="acre" id="row3acre12"></div><div 
+class="acre" id="row3acre13"></div><div 
+class="acre" id="row3acre14"></div><div 
+class="acre" id="row3acre15"></div><br>
+<div 
+class="acre" id="row4acre1"></div><div 
+class="acre" id="row4acre2"></div><div 
+class="acre" id="row4acre3"></div><div 
+class="acre" id="row4acre4"></div><div 
+class="acre" id="row4acre5"></div><div 
+class="acre" id="row4acre6"></div><div 
+class="acre" id="row4acre7"></div><div 
+class="acre" id="row4acre8"></div><div 
+class="acre" id="row4acre9"></div><div 
+class="acre" id="row4acre10"></div><div 
+class="acre" id="row4acre11"></div><div 
+class="acre" id="row4acre12"></div><div 
+class="acre" id="row4acre13"></div><div 
+class="acre" id="row4acre14"></div><div 
+class="acre" id="row4acre15"></div><br>
+<div 
+class="acre" id="row5acre1"></div><div 
+class="acre" id="row5acre2"></div><div 
+class="acre" id="row5acre3"></div><div 
+class="acre" id="row5acre4"></div><div 
+class="acre" id="row5acre5"></div><div 
+class="acre" id="row5acre6"></div><div 
+class="acre" id="row5acre7"></div><div 
+class="acre" id="row5acre8"></div><div 
+class="acre" id="row5acre9"></div><div 
+class="acre" id="row5acre10"></div><div 
+class="acre" id="row5acre11"></div><div 
+class="acre" id="row5acre12"></div><div 
+class="acre" id="row5acre13"></div><div 
+class="acre" id="row5acre14"></div><div 
+class="acre" id="row5acre15"></div><br>
+<div 
+class="acre" id="row6acre1"></div><div 
+class="acre" id="row6acre2"></div><div 
+class="acre" id="row6acre3"></div><div 
+class="acre" id="row6acre4"></div><div 
+class="acre" id="row6acre5"></div><div 
+class="acre" id="row6acre6"></div><div 
+class="acre" id="row6acre7"></div><div 
+class="acre" id="row6acre8"></div><div 
+class="acre" id="row6acre9"></div><div 
+class="acre" id="row6acre10"></div><div 
+class="acre" id="row6acre11"></div><div 
+class="acre" id="row6acre12"></div><div 
+class="acre" id="row6acre13"></div><div 
+class="acre" id="row6acre14"></div><div 
+class="acre" id="row6acre15"></div><br>
+
+</body>
+    <script src="game.js"></script>
+    <script src="game2.js"></script>
+</html>
